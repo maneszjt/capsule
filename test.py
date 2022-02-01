@@ -4,29 +4,34 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
-def drawImage():
+def drawImage(single_date):
     # Open an Image
-    img = Image.open('/Users/zac/generative nft test/input/page/template.png')
+    img = Image.open('assets/template.png')
 
     # Call draw Method to add 2D graphics in an image
     I1 = ImageDraw.Draw(img)
 
-    myFont = ImageFont.truetype('/Users/zac/Downloads/Futura Bold/Futura Bold.otf', 125)
+    myFont = ImageFont.truetype('assets/Futura Bold.otf', 100)
 
-    # Add Text to an image
-    I1.text((151, 203), "`single date`", fill=(255, 255, 255))
+    # Add text for the day and month "Thu 20 Jan."
+    I1.text((151, 203), single_date.strftime('%a %d %b.'), fill=(0, 0, 0), font=myFont)
+    # Add text for the year "2022"
+    I1.text((151, 310), single_date.strftime('%Y'), fill=(0, 0, 0), font=myFont)
 
-    # Display edited image
-    img.show()
+
+    # filename per date to be saved
+    output_filename = f"{single_date.strftime('%d-%m-%Y')}.png"
 
     # Save the edited image
-    img.save("`single_date`.png")
+    img.save(f"output_images/{output_filename}")
 
 def daterange(start_date, end_date):
     for n in range(int((end_date - start_date).days)):
         yield start_date + timedelta(n)
 
+
+
 start_date = date(2022, 1, 1)
 end_date = date(2022, 1, 7)
 for single_date in daterange(start_date, end_date):
-    drawImage()
+    drawImage(single_date)
