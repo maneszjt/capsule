@@ -4,7 +4,21 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
+   # notes to tomer
+   # so i imagine the training part of the process would go here
+
 def drawImage(single_date):
+    # and then i imagine the generative part (one image at a time) would go here
+    # not sure how to do that and i'm not certain exactly how the python would be split
+    # i imagine there would need to be a solid training cycle — 100 images at, say, 50 epochs each
+    # or alternatively we could do decades — feed it, like, magazine pics or film posters or whatever from the 70s for the 70s and so on
+    # the upscale 4x in Looking Glass v1.3 would get the output to 1024 but the template.png is 1080x1080 but i suppose that's more fixable in the template
+    # i'm open to doing a series of batch runs rather than one individual run
+    # eg. do the 70s, then the 80s, then the 90s, then the 00s, then the 10s, then the 20s to, like, the end of this year for each of the days
+    # i thought this would be a generative process upon mint but i suspect it will actually be easier to precreate the image assets
+    # and then we just pull 'today's' NFT from an array, or something, to bid upon
+    # based off a Nouns fork — https://nouns.notion.site/Explore-Nouns-a2a9dceeb1d54e10b9cbf3f931c2266f
+   
     # Open an Image
     img = Image.open('assets/template.png')
 
